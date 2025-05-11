@@ -40,7 +40,7 @@ EIP-1559 logic is handled in the Geth codebase under:
 - [`core/txpool/txpool.go`](https://github.com/ethereum/go-ethereum/blob/master/core/txpool/txpool.go): Transaction prioritization considers `gasTip`.
 - [`core/types/transaction.go`](https://github.com/ethereum/go-ethereum/blob/master/core/types/transaction.go): Defines new `DynamicFeeTx` type to support EIP-1559 fields (`MaxFeePerGas`, `MaxPriorityFeePerGas`).
 - [`core/state_transition.go`](https://github.com/ethereum/go-ethereum/blob/master/core/state_transition.go): Fee burning logic (burned by omission) and gas accounting.
-- [`consensus/misc/eip1559/eip1559.go`](https://github.com/ethereum/go-ethereum/blob/master/consensus/eip1559/eip1559.go): Dynamic base fee and block gas limit calculations.
+- [`consensus/misc/eip1559/eip1559.go`](https://github.com/ethereum/go-ethereum/blob/master/consensus/misc/eip1559/eip1559.go): Dynamic base fee and block gas limit calculations.
 
 ---
 
