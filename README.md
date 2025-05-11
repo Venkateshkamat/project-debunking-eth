@@ -89,7 +89,7 @@ We explored Ethereum in four key areas:
 
 ## Venkatesh
 
-- **Geth Codebase Overview**
+- [**Geth Codebase Overview**](/docs/geth_code_overview.md)
   - Explored startup flow via `cmd/geth`
   - Mapped module responsibilities (`eth/`, `core/`, `p2p/`, `rpc/`)
 - **State Management & Transactions**
