@@ -78,7 +78,7 @@ We explored Ethereum in four key areas:
 ## Daniel
 
 - **State Management & Transactions**
-- **Deploy & Interact**
+- [**Deploy & Interact**](/docs/deployment.md)
   - Wrote Python scripts to:
     - Generate Ethereum accounts (`account.py`)
     - Check balances on Sepolia (`address.py`)
