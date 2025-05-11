@@ -119,7 +119,7 @@ We explored Ethereum in four key areas:
 
 ## Becky
 
-- **Consensus & Upgrades**
+- [**Consensus & Upgrades**](docs/consensus_and_upgrades.md)
   - Researched and documented **The Merge** (transition from PoW to PoS)
   - Analyzed Geth's `consensus/` module
   - Explained **EIP-1559** gas fee reform and how it changed transaction behavior
