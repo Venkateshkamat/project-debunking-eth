@@ -109,14 +109,18 @@ We explored Ethereum in four key areas:
 ## Kathy
 
 - **Geth Codebase Overview**
+  - Investigated [Ethereum Node Initialization in Geth](docs/node_initialization.md)
+    - makeFullNode and node lifecycle management
+  - Examined [Service Registration in Geth](docs/service_resgistration.md)
+    - eth.New() implementation and service initialization
 - **Contract Creation and Execution**
 - **Consensus & Upgrades**
   - Researched future scaling proposals:
     - **EIP-4844 (Proto-Danksharding)**
     - **Verkle Trees**
-  - Explained how these upgrades will improve L2 scalability and state efficiency
-- [**Running an Ethereum Node on External SSD Using Geth and Prysm**](https://docs.google.com/document/d/12nJMG3LiXx2Y7UPmoq1w9bOyJGU9kCB49lgibeR_69Y/edit?usp=sharing)
-- [**Create account and sign with Clef**](https://docs.google.com/document/d/1nZcG6HFykAk0Q4nh4oNzgASW1vRQ2swxmDmodVms4J0/edit?usp=sharing)
+- **Node Implementation**
+  - [**Running an Ethereum Node on External SSD Using Geth and Prysm**](https://docs.google.com/document/d/12nJMG3LiXx2Y7UPmoq1w9bOyJGU9kCB49lgibeR_69Y/edit?usp=sharing)
+  - [**Create account and sign with Clef**](https://docs.google.com/document/d/1nZcG6HFykAk0Q4nh4oNzgASW1vRQ2swxmDmodVms4J0/edit?usp=sharing)
 
 ---
 
