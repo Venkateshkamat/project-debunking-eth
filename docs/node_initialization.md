@@ -1,13 +1,15 @@
 # Ethereum Node Initialization in Geth
 
-Geth turns command-line flags and config files into a working Ethereum node through a well-defined startup process. This process sets up everything needed to sync the blockchain, process transactions, and serve API requests.
+This document analyzes how Geth transforms command-line flags and configuration files into a fully operational Ethereum node. It explains the startup process that prepares the node to sync the blockchain, process transactions, and serve API requests.
 
 The main entry point for execution client setup is:
 `func makeFullNode(ctx *cli.Context) *node.Node`, and is located in [`cmd/geth/config.go`](https://github.com/ethereum/go-ethereum/blob/master/cmd/geth/config.go).
 
 ## Breakdown of `makeFullNode(ctx)`
 
-### 1. Build Base Node with `makeConfigNode(ctx)`
+### 1. Call `makeConfigNode(ctx)`
+
+`makeFullNode(ctx)` starts by calling `makeConfigNode(ctx)` to build base node.
 
 ```go
 stack, cfg := makeConfigNode(ctx)
@@ -18,7 +20,7 @@ This line initializes the core node and configuration where:
 - `stack` is a `*node.Node` instance that provides the service container for Ethereum and other modules.
 - `cfg` is a gethConfig struct that includes Ethereum-specific settings such as chain rules, consensus configs, database paths, and network options.
 
-Internally, makeConfigNode() builds the base node instance and loads the configuration, including chain settings(chain ID, genesis block), database paths, and Network parameters (P2P ports, discovery settings).
+Internally, makeConfigNode() builds the base node instance and loads the configuration.
 
 ### 2. Apply Chain Rule Overrides
 
@@ -35,11 +37,7 @@ if ctx.IsSet(utils.OverrideVerkle.Name) {
 }
 ```
 
-These overrides allow custom fork block numbers via CLI flags like `--overridePrague` and `--overrideVerkle`. This is particularly useful for:
-
-- Testing specific upgrade transitions
-- Development environments
-- Custom networks with modified fork schedules
+These overrides allow custom fork block numbers via CLI flags like `--overridePrague` and `--overrideVerkle`. This is useful for testing specific upgrade transitions, development environments, or custom networks with modified fork schedules
 
 ### 3. Setup Metrics
 
@@ -47,18 +45,7 @@ These overrides allow custom fork block numbers via CLI flags like `--overridePr
 utils.SetupMetrics(&cfg.Metrics)
 ```
 
-If metrics are enabled via CLI, this is called to export Prometheus-style metrics. Geth also generates and exports runtime metadata such as architecture, OS, and protocol versions through the following code:
-
-```go
-metrics.NewRegisteredGaugeInfo("geth/info", nil).Update(metrics.GaugeInfoValue{
-    "arch":      runtime.GOARCH,
-    "os":        runtime.GOOS,
-    "version":   cfg.Node.Version,
-    "protocols": strings.Join(protos, ","),
-})
-```
-
-This information is valuable for monitoring and debugging node operations in production environments.
+If metrics are enabled with CLI flags, Geth calls `utils.SetupMetrics()` to export Prometheus-style metrics. Geth also generates runtime metadata. This includes architecture, operating system, and protocol versions.
 
 ### 4. Register Ethereum Backend
 
@@ -161,26 +148,7 @@ else {
 
 In normal operation, Geth registers the Engine API to communicate with an external consensus client (like Prysm, Lighthouse, etc.) following the post-merge architecture.
 
-## Configuration Setup: `makeConfigNode(ctx)`
-
-Before any services can be registered, the node itself must be configured using `makeConfigNode()`, which:
-
-- Parses CLI inputs
-- Validates flags and config paths
-- Creates the `node.Config` struct
-- Loads network-specific defaults
-- Configures P2P networking settings
-- Calls `node.New()` to construct the base node
-
-This step sets up the internal structure that later holds all the services like Ethereum, RPC, and many others.
-
-## Node Lifecycle Management
-
-The returned `*node.Node` instance contains lifecycle management hooks that:
-
-1. Start all registered services in dependency order
-2. Handle graceful shutdown when interrupted
-3. Manage resource allocation and cleanup
+---
 
 ## Starting the Node
 

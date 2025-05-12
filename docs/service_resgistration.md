@@ -4,7 +4,7 @@ This section analyzes how Ethereum services are registered and initialized in th
 
 ## Service Registration Overview
 
-After `makeConfigNode` creates the base node infrastructure, Geth registers its core services using `stack.Register()`. The core registration is the Ethereum backend itself, which is created and wired to the node through `eth.New()`. This function connects all essential components that make up a functioning Ethereum node.
+After makeConfigNode creates the base node infrastructure, Geth registers its core services using `stack.Register()`. The core registration is the Ethereum backend itself, which is created and wired to the node through `eth.New()`. This function connects all essential components that make up a functioning Ethereum node.
 
 ## Breakdown of `eth.New()`
 
@@ -191,7 +191,7 @@ eth.APIBackend.gpo = gasprice.NewOracle(eth.APIBackend, config.GPO, config.Miner
 
 ### 12. API Service Registration
 
-Finally, it registers all the APIs and protocols with the node:
+Finally, the node calls
 
 ```go
 stack.RegisterAPIs(eth.APIs())
@@ -199,45 +199,4 @@ stack.RegisterProtocols(eth.Protocols())
 stack.RegisterLifecycle(eth)
 ```
 
-This makes the following services available:
-
-- Ethereum JSON-RPC API (eth namespace)
-- Miner API
-- Admin API
-- Debug API
-- Network API
-- Consensus-specific APIs
-
-## Service Lifecycle Management
-
-The `eth.New()` function returns an Ethereum service that implements the `node.Lifecycle` interface, allowing the node to properly start and stop all components:
-
-```go
-func (s *Ethereum) Start() error {
-    // Start discovery services
-    // Start networking
-    // Start blockchain services
-    // Start transaction pool
-    // ...
-}
-
-func (s *Ethereum) Stop() error {
-    // Stop networking
-    // Stop transaction pool
-    // Stop blockchain
-    // Close databases
-    // ...
-}
-```
-
-This ensures that all components are started in the correct order during node initialization and gracefully shut down when the node terminates.
-
-## Component Interdependencies
-
-Overall, the initialization sequence in `eth.New()` manages dependencies between components:
-
-1. Database → Blockchain → Transaction Pool → Miner
-2. Consensus Engine is used by the Blockchain for block validation
-3. Transaction Pool depends on the Blockchain for validation
-4. Handler requires both Blockchain and Transaction Pool
-5. API Backend ties all components together for RPC access
+to wire up all of its services, exposing the Ethereum JSON-RPC interface(under the eth namespace) along with the Miner, Admin, Debug, Network, and any consensus-specific APIs.

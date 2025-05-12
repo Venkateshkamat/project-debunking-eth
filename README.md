@@ -109,18 +109,15 @@ We explored Ethereum in four key areas:
 ## Kathy
 
 - **Geth Codebase Overview**
-  - Investigated [Ethereum Node Initialization in Geth](docs/node_initialization.md)
-    - makeFullNode and node lifecycle management
-  - Examined [Service Registration in Geth](docs/service_resgistration.md)
-    - eth.New() implementation and service initialization
-- **Contract Creation and Execution**
+  - Investigated [Ethereum Node Initialization](docs/node_initialization.md) in `cmd/geth/config.go`
+  - Explored [Service Registration](docs/service_resgistration.md) in `eth/backend.go`
+  - Analyzed [Contract Creation and Execution](docs/evm_analysis.md) in `core/vm/evm.go`
+- **[Transaction Processing Flow](docs/tx_processing.md)**
 - **Consensus & Upgrades**
-  - Researched future scaling proposals:
-    - **EIP-4844 (Proto-Danksharding)**
-    - **Verkle Trees**
+  - Researched future scaling proposals: [EIP-4844(Proto-Danksharding) & Verkle Trees](docs/proto-danksharding_verkle_tree.md)
 - **Node Implementation**
-  - [**Running an Ethereum Node on External SSD Using Geth and Prysm**](https://docs.google.com/document/d/12nJMG3LiXx2Y7UPmoq1w9bOyJGU9kCB49lgibeR_69Y/edit?usp=sharing)
-  - [**Create account and sign with Clef**](https://docs.google.com/document/d/1nZcG6HFykAk0Q4nh4oNzgASW1vRQ2swxmDmodVms4J0/edit?usp=sharing)
+  - [Running an Ethereum node on external SSD using geth and prysm](https://docs.google.com/document/d/12nJMG3LiXx2Y7UPmoq1w9bOyJGU9kCB49lgibeR_69Y/edit?usp=sharing)
+  - [Create account and sign with Clef](https://docs.google.com/document/d/1nZcG6HFykAk0Q4nh4oNzgASW1vRQ2swxmDmodVms4J0/edit?usp=sharing)
 
 ---
 
