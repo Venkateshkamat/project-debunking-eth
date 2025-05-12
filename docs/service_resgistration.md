@@ -131,13 +131,6 @@ blobPool := blobpool.New(config.BlobPool, eth.blockchain, legacyPool.HasPendingA
 eth.txPool, err = txpool.New(config.TxPool.PriceLimit, eth.blockchain, []txpool.SubPool{legacyPool, blobPool})
 ```
 
-The transaction pool handles:
-
-- Transaction validation and sorting
-- Gas price-based prioritization
-- Local transaction management
-- Transaction propagation to peers
-
 ### 9. Network Handler Initialization
 
 It creates the protocol handler for P2P communication:
@@ -163,9 +156,9 @@ The handler manages:
 - Transaction propagation
 - Chain information exchange
 
-### 10. Miner Component Setup
+### 10. Block Production Component Setup
 
-It initializes the miner/block producer component:
+This step initializes the component responsible for block production (still called "miner" in the code):
 
 ```go
 eth.miner = miner.New(eth, config.Miner, eth.engine)
@@ -173,12 +166,7 @@ eth.miner.SetExtra(makeExtraData(config.Miner.ExtraData))
 eth.miner.SetPrioAddresses(config.TxPool.Locals)
 ```
 
-The miner is responsible for:
-
-- Block creation
-- Transaction selection
-- Fee recipient management
-- Block sealing (via consensus engine)
+Although Ethereum has transitioned from PoW to PoS, this component still retains the name "miner" in the code for historical reasons and code compatibility. In reality, under the current PoS mechanism, it functions more like a "block proposer."
 
 ### 11. API Backend Registration
 
