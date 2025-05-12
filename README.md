@@ -100,12 +100,12 @@ We explored Ethereum in four key areas:
 ## Xinhao
 
 - [**State Management**](docs/ethereum-state-management.md)
-  - Investigated Ethereum’s state management system
-  - Analyzed five core components of state management, demonstrated key functions and workflows
-  - Analyzed state transition functionality in `state_transition.go`
-  - Demonstrated state verification and updates
-  - Analyzed state structures and storage in `state_object.go`, `storage.go` and `state_db.go`
-  - Analyzed state commit in `commit.go`
+- Investigated Ethereum’s state management system
+- Analyzed five core components of state management, demonstrated key functions and workflows
+- Analyzed state transition functionality in `state_transition.go`
+- Demonstrated state verification and updates
+- Analyzed state structures and storage in `state_object.go`, `storage.go` and `state_db.go`
+- Analyzed state commit in `commit.go`
 
 ---
 
