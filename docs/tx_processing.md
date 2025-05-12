@@ -209,3 +209,11 @@ Finally:
 
 1. The block is finalized with consensus engine-specific operations (like distributing block rewards)
 2. A `ProcessResult` is returned with receipts, requests, logs, and total gas used
+
+## References
+
+- [Transaction Lifecycle in Ethereum](https://medium.com/blockchannel/life-cycle-of-an-ethereum-transaction-e5c66bae0f6e)
+- [Ethereum Block Processing Explained](https://ethereum.org/en/developers/docs/blocks/)
+- [EIP-4788: Beacon block root in the EVM](https://eips.ethereum.org/EIPS/eip-4788)
+- [EIP-2935: Save historical block hashes in state](https://eips.ethereum.org/EIPS/eip-2935)
+- [Ethereum Prague Network Upgrade Overview](https://crypto.com/en/university/ethereum-pectra-prague-electra-upgrade)

@@ -146,7 +146,7 @@ else {
 }
 ```
 
-In normal operation, Geth registers the Engine API to communicate with an external consensus client (like Prysm, Lighthouse, etc.) following the post-merge architecture.
+In normal operation, Geth registers the Engine API([A visual guide](https://hackmd.io/@danielrachi/engine_api)) to communicate with an external consensus client (like Prysm, Lighthouse, etc.) following the post-merge architecture.
 
 ---
 
