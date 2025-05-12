@@ -99,7 +99,7 @@ We explored Ethereum in four key areas:
 
 ## Xinhao
 
-- **State Management & Transactions**
+- [**State Management & Transactions**](docs/ethereum-state-management.md)
   - Investigated Ethereum’s transaction lifecycle
   - Analyzed how transactions move from mempool to execution (`tx_pool.go`, `blockchain.go`)
   - Reviewed state structures in `state_object.go` and `state_db.go`
